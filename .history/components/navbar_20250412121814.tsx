@@ -34,10 +34,9 @@ export const Navbar = () => {
   return (
     <nav className="sticky top-0 z-50 bg-white shadow-md">
       <div className="container mx-auto flex items-center justify-between px-4 py-4">
-        <Link href="/" className="flex items-center space-x-2">
-          <img src="/logo.jpg" alt="Logo" className="h-12 w-auto" />
+        <Link href="/" className="text-2xl font-bold text-indigo-600 hover:text-indigo-800 transition-colors">
+          Mon E-commerce
         </Link>
-
 
         {/* Desktop nav */}
         <div className="hidden md:flex items-center space-x-6 text-base font-medium">

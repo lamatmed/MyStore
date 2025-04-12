@@ -112,7 +112,6 @@ export default function CheckoutPage() {
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-8 text-center">Checkout</h1>
-
       <Card className="max-w-md mx-auto mb-8">
         <CardHeader>
           <CardTitle className="text-xl font-bold">Résumé de la commande</CardTitle>
@@ -152,21 +151,16 @@ export default function CheckoutPage() {
           </div>
         </CardContent>
       </Card>
-
-      {/* Boutons dans une même colonne max-w-md */}
-      <div className="max-w-md mx-auto space-y-4">
-        <form action={checkoutAction}>
-          <input type="hidden" name="items" value={JSON.stringify(items)} />
-          <Button type="submit" variant="default" className="w-full">
-            Procéder au paiement
-          </Button>
-        </form>
-
-        <Button variant="outline" className="w-full" onClick={generatePDF}>
+      <form action={checkoutAction} className="max-w-md mx-auto">
+        <input type="hidden" name="items" value={JSON.stringify(items)} />
+        <Button type="submit" variant="default" className="w-full">
+          Procéder au paiement
+        </Button>
+        <Button variant="outline" className="w-full mt-4 " onClick={generatePDF}>
           Télécharger la facture PDF
         </Button>
-      </div>
+      </form>
+     
     </div>
-
   );
 }

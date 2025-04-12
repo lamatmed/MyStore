@@ -29,17 +29,20 @@ export const Navbar = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const navLinkStyle = "flex items-center gap-2 text-gray-700 hover:text-indigo-600 transition-colors";
+  const navLinkStyle =
+    "flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors";
 
   return (
-    <nav className="sticky top-0 z-50 bg-white shadow-md">
+    <nav className="sticky top-0 z-50 bg-background shadow-md border-b border-border">
       <div className="container mx-auto flex items-center justify-between px-4 py-4">
-        <Link href="/" className="flex items-center space-x-2">
-          <img src="/logo.jpg" alt="Logo" className="h-12 w-auto" />
+        <Link
+          href="/"
+          className="text-xl font-bold text-primary hover:text-primary-foreground transition-colors"
+        >
+          Mon E-commerce
         </Link>
 
-
-        {/* Desktop nav */}
+        {/* Desktop */}
         <div className="hidden md:flex items-center space-x-6 text-base font-medium">
           <Link href="/" className={navLinkStyle}>
             <HomeIcon className="h-5 w-5" /> Accueil
@@ -52,11 +55,15 @@ export const Navbar = () => {
           </Link>
         </div>
 
+        {/* Cart + menu */}
         <div className="flex items-center space-x-4">
-          <Link href="/checkout" className="relative text-gray-700 hover:text-indigo-600 transition-colors">
+          <Link
+            href="/checkout"
+            className="relative text-muted-foreground hover:text-primary transition-colors"
+          >
             <ShoppingCartIcon className="h-6 w-6" />
             {cartCount > 0 && (
-              <span className="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-xs text-white">
+              <span className="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-destructive text-xs text-white animate-pulse">
                 {cartCount}
               </span>
             )}
@@ -67,9 +74,9 @@ export const Navbar = () => {
             onClick={() => setMobileOpen((prev) => !prev)}
           >
             {mobileOpen ? (
-              <XMarkIcon className="h-6 w-6 text-gray-700" />
+              <XMarkIcon className="h-6 w-6 text-foreground" />
             ) : (
-              <Bars3Icon className="h-6 w-6 text-gray-700" />
+              <Bars3Icon className="h-6 w-6 text-foreground" />
             )}
           </Button>
         </div>
@@ -77,7 +84,7 @@ export const Navbar = () => {
 
       {/* Mobile nav */}
       {mobileOpen && (
-        <div className="md:hidden bg-white shadow-md animate-slide-down">
+        <div className="md:hidden bg-background shadow-md animate-in fade-in slide-in-from-top-2 duration-300">
           <ul className="flex flex-col p-4 space-y-3 text-base font-medium">
             <li>
               <Link href="/" className={navLinkStyle}>

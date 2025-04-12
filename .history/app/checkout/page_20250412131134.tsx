@@ -69,19 +69,18 @@ export default function CheckoutPage() {
 
       const nameLines = doc.splitTextToSize(item.name, 32); // max ~32mm pour le nom
 
-      nameLines.forEach((line: string | string[], index: number) => {
-        doc.text(line, 5, y);
+     nameLines.forEach((line: string, index: number) => {
+  doc.text(line, 5, y);
 
-        // Affiche quantité/prix/total seulement sur la première ligne
-        if (index === 0) {
-          doc.text(`${item.quantity}`, 40, y);
-          doc.text(`${unitPrice}$`, 50, y);
-          doc.text(`${lineTotal}$`, 75, y, { align: "right" });
-        }
+  if (index === 0) {
+    doc.text(`${item.quantity}`, 40, y);
+    doc.text(`${unitPrice}€`, 50, y);
+    doc.text(`${lineTotal}€`, 75, y, { align: "right" });
+  }
 
-        y += 5;
-      });
-    });
+  y += 5;
+});
+
 
     y += 2;
     doc.line(5, y, 75, y);
@@ -90,7 +89,7 @@ export default function CheckoutPage() {
     doc.setFontSize(11);
     doc.setFont("helvetica", "bold");
     doc.text("Total à payer", 5, y);
-    doc.text(`${(total / 100).toFixed(2)} $`, 75, y, { align: "right" });
+    doc.text(`${(total / 100).toFixed(2)} €`, 75, y, { align: "right" });
     y += 8;
 
     doc.setFontSize(10);
@@ -112,7 +111,6 @@ export default function CheckoutPage() {
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-8 text-center">Checkout</h1>
-
       <Card className="max-w-md mx-auto mb-8">
         <CardHeader>
           <CardTitle className="text-xl font-bold">Résumé de la commande</CardTitle>
@@ -152,21 +150,16 @@ export default function CheckoutPage() {
           </div>
         </CardContent>
       </Card>
-
-      {/* Boutons dans une même colonne max-w-md */}
-      <div className="max-w-md mx-auto space-y-4">
-        <form action={checkoutAction}>
-          <input type="hidden" name="items" value={JSON.stringify(items)} />
-          <Button type="submit" variant="default" className="w-full">
-            Procéder au paiement
-          </Button>
-        </form>
-
-        <Button variant="outline" className="w-full" onClick={generatePDF}>
-          Télécharger la facture PDF
+      <form action={checkoutAction} className="max-w-md mx-auto">
+        <input type="hidden" name="items" value={JSON.stringify(items)} />
+        <Button type="submit" variant="default" className="w-full">
+          Procéder au paiement
         </Button>
-      </div>
-    </div>
 
+      </form>
+      <Button variant="outline" className="w-full mt-4" onClick={generatePDF}>
+        Télécharger la facture PDF
+      </Button>
+    </div>
   );
 }
