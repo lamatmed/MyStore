@@ -39,11 +39,10 @@ export const Navbar = () => {
           <Image
             src="/logo.jpg"
             alt="Logo"
-            width={50}
-            height={50}
+            width={100}
+            height={1000}
             className="rounded"
           />
-          <span className="font-semibold text-base text-gray-800">MyStore</span>
         </Link>
 
 

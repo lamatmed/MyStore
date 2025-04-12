@@ -12,7 +12,6 @@ import {
 import { useCartStore } from "@/store/cart-store";
 import { useEffect, useState } from "react";
 import { Button } from "./ui/button";
-import Image from "next/image";
 
 export const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -35,15 +34,9 @@ export const Navbar = () => {
   return (
     <nav className="sticky top-0 z-50 bg-white shadow-md">
       <div className="container mx-auto flex items-center justify-between px-4 py-4">
-        <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition">
-          <Image
-            src="/logo.jpg"
-            alt="Logo"
-            width={50}
-            height={50}
-            className="rounded"
-          />
-          <span className="font-semibold text-base text-gray-800">MyStore</span>
+        <Link href="/" className="flex items-center space-x-2">
+          <img src="/logo.jpg" alt="Logo" className="h-12 w-auto" />
+          
         </Link>
 
 
