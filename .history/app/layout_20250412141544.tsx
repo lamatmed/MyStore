@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
-import Footer from "@/components/footer";
 
 export const metadata: Metadata = {
   title: "MyStore",
@@ -24,7 +23,7 @@ export default function RootLayout({
         <main className="flex-grow container mx-auto px-4 py-8">
           {children}
         </main>
-        <Footer/>
+        <
       </body>
     </html>
   );
