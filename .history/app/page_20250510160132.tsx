@@ -1,5 +1,4 @@
 export const dynamic = "force-dynamic"; // 👈 Ajoute ceci tout en haut du fichier
-import type Stripe from "stripe";
 
 import Image from "next/image";
 import { stripe } from "@/lib/stripe";

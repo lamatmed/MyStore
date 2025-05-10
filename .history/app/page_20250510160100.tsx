@@ -1,5 +1,4 @@
 export const dynamic = "force-dynamic"; // 👈 Ajoute ceci tout en haut du fichier
-import type Stripe from "stripe";
 
 import Image from "next/image";
 import { stripe } from "@/lib/stripe";
@@ -8,7 +7,7 @@ import Link from "next/link";
 import { Carousel } from "@/components/carousel";
 
 export default async function Home() {
-let products: Stripe.Product[] = [];
+  let products = [];
 
   try {
     const response = await stripe.products.list({
